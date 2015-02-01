@@ -1,0 +1,45 @@
+<html>
+   <head>
+      <title>${Title}</title>
+      <link rel="stylesheet" type="text/css" href="/css/index.css" />
+      <link rel="stylesheet" type="text/css" href="/css/fonts.css" />
+      <script type="text/javascript" src="/js/jquery.js"></script>
+      <script type="text/javascript" src="/js/script.js"></script>
+      <%block name="head"/>
+   </head>
+   <body>
+      <div id="body">
+         <div id="header" class="mains">
+            <div id="top-bar">
+               <button id="nav-hide"></button>
+               <form name="search" action="/search" method="get">
+                  <input name="query" type="text" placeholder="Search"
+                  % if not query is UNDEFINED:
+                  value="${query}"
+                  % endif
+                  ></input>
+               </form>
+            </div>
+         </div>
+         <div id="content" class="mains">
+            <div id="content-wrapper" class="content">
+               <h1 id="title"><%block name="title">${Title}</%block></h1>
+               <%block name="content"/>
+
+            </div>
+         </div>
+         <div id="nav" class="nav">
+            <ul class="menu">
+               <li class="menu"><a href="/">Home</a></li>
+               <li class="menu"><a href="/">Articles</a><ul class="submenu">
+                  <li class="submenu"><a href="/search">Search</a></li>
+                  <li class="submenu">Add New</li>
+               </ul></li>
+               <li class="menu"><a href="/login">Login</a></li>
+               <%block name="nav"/>
+            </ul>
+         </div>
+         <div id="footer" class="mains"></div>
+      </div>
+   </body>
+</html>

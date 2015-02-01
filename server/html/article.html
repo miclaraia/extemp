@@ -1,0 +1,58 @@
+<%inherit file="base.html"/>
+<%block name="title">
+   <a href="${url}">${Title}</a>
+</%block>
+
+<%block name="head">
+% if edit == 'true':
+      <script type="text/javascript" src="/ckedit/ckeditor.js"></script>
+      <script type="text/javascript" src="/ckedit/adapters/jquery.js"></script>
+      <script type="text/javascript" src="/js/editor.js"></script>
+% endif
+</%block>
+
+<%block name="content">
+   <div id="article-wrapper" class="article">
+      <div id="top" class="article">
+         <div id="host" class="article small">${host}</div>
+         <div id="author" class="article small">${author}</div>
+         <div id="date" class="article small">${date}</div>
+      </div>
+      <div id="text" class="article">${text}</div>
+      <div id="url" class="article"><a href="${url}">${url}</a></div>
+      % if tags is not None:
+         <div id="tags" class="article small">${tags}</div>
+      % endif
+   </div>
+</%block>
+
+<%block name="nav">
+   <li class="menu">Settings
+      <ul class="submenu settings">
+      <form id="articleForm" action="/article" method="post">
+         <input type="hidden" name="id" value="${id}"/>
+         <li class="submenu">
+            <a href="/article?id=${id}&edit=true">Edit</a>
+         </li>
+         % if edit == 'true':
+         <input id="text" type="hidden" name="text"/>
+         <li class="submenu">
+            <button class="settings" name="action" value="submit">Submit</button>
+         </li>
+         % endif
+         <li class="submenu">
+            <button class="settings" id="delete" name="action" value="delete">Delete</button>
+         </li>
+         % if not pin is UNDEFINED:
+            <li class="submenu">
+            % if pin == True:
+               <button class="settings" id="unpin" name="action" value="unpin">Unpin</button>
+            % else:
+               <button class="settings" id="pin" name="action" value="pin">Pin</button>
+            % endif
+            </li>
+         % endif
+      </form>
+      </ul>
+   </li>
+</%block>

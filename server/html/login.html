@@ -1,0 +1,11 @@
+<%inherit file="base.html"/>
+
+<%block name="content">
+   <div id="content" class="login">
+      <form class="login" name="login" action="/login" method="post">
+         <span class="login">Name:</span>
+         <input id="user" class="login" name="user" type="text"/>
+      </form>
+      Currently logged in as: ${x}
+   </div>
+</%block>

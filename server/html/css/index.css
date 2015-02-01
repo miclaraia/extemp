@@ -1,0 +1,321 @@
+/*################### Globals ##################*/
+body {
+   margin:0;
+   font-family:aller;
+   background:rgb(240,240,240);
+}
+ul {
+   list-style-type:none;
+   padding:0;
+}
+a {
+   text-decoration:none;
+   color:inherit;
+}
+/*################### Main Divs ##################*/
+div.mains{
+   position:relative;
+   margin:20px 0;
+}
+div#header{
+   height:50px;
+   margin-top:0;
+}
+div#content{
+   color:rgb(14, 52, 79);
+}
+div#content-wrapper{
+   width:940px;
+   position:relative;
+   margin:auto;
+   padding:20px;
+}
+/*################### Navbar ##################*/
+div#nav{
+   display:block;
+   position:absolute;
+   left:0;
+   top:100px;
+   width:75px;
+}
+div#nav a {
+   display:block;
+}
+div#nav li {
+   width:100px;
+   height:50px;
+   line-height:50px;
+   text-align:center;
+   background:rgb(190,67,64);
+   color:white;
+   text-size:.5em;
+   margin:5px;
+   border-radius:2px;
+   box-shadow:5px 5px 5px rgba(190,67,64, .2);
+}
+div#nav ul.submenu {
+   overflow:hidden;
+   width:0;
+   margin-top:-50px;
+   margin-left:100px;
+   transition:.25s;
+}
+div#nav li.menu:hover ul.submenu {
+   overflow:visible;
+   width:120px;
+
+}
+div#nav li.submenu {
+   width:auto;
+   margin-top:0px;
+}
+div#nav li.menu {
+   margin-left:0;
+}
+div#footer{}
+/*###################  Top Bar ##################*/
+#top-bar {
+   font-family:aller;
+   font-size:1em;
+   text-align:center;
+   color:rgb(240,240,240);
+   background:rgb(43,108,156);
+   min-width:974px;
+   height:50px;
+   line-height:50px;
+   position:absolute;
+   top:0;
+   left:0;
+   right:0;
+}
+#top-bar form {
+   padding:5px;
+}
+#top-bar input[type=text] {
+   line-height:39px;
+   height:40px;
+   border-style:none;
+   margin:0;
+   padding:0 15px;
+   width:800px;
+   font-size:1.4em;
+}
+#top-bar span {
+   font-family:aller;
+   font-size:1.5em;
+   position:absolute;
+   margin:auto;
+   height:40px;
+   top:0;
+   bottom:0;
+}
+#nav-hide {
+display:none;
+width:30PX;
+height:30px;
+background:rgb(216,216,190);
+border-radius:2px;
+box-shadow:2px 2px 2px rgba(216,216,190,.2);
+border-style:none;
+position:absolute;
+left:25px;
+top:0;
+bottom:0;
+margin:auto;
+}
+/*###################  Results List ##################*/
+li.article-list.results {
+   margin:10px;
+   position:relative;
+   display:inline-block;
+   vertical-align:top;
+   width:400px;
+   height:180px;
+   padding:20px;
+   background:rgb(216, 216, 190);
+   box-shadow:5px 5px 5px rgba(216, 216, 190, .2);
+   border-radius:2px;
+   overflow:hidden;
+}
+li.article-list.results #snippet {
+   width:400px;
+   height:109px;
+   line-height:18px;
+   overflow:hidden;
+   margin:10px 0;
+}
+li.article-list.results #title {
+   padding-bottom:4px;
+   color:rgb(43, 108, 156);
+}
+li.article-list.results #meta {
+   position:relative;
+}
+li.article-list.results #meta div {
+   display:inline-block;
+   position:absolute;
+   top:0;
+   bottom:0;
+   margin:auto;
+}
+li.article-list.results #date {
+   right:0;
+}
+li.article-list.results #host {
+   right:100px;
+   text-align:right;
+}
+li.article-list.results #author {
+   text-align:center;
+   margin:auto;
+   left:0;
+}
+li.article-list.results .small {
+   color:rgb(64,102,129);
+   font-size:.8em;
+   height:16px;
+   overflow:hidden;
+}
+li.article-list.results #tags {
+   position:absolute;
+   bottom:10px;
+}
+ul.article-list.results a {
+   display:block;
+}
+div.content h1#title {
+}
+div.content h1#title a:hover {
+   color:rgb(43, 108, 156);
+}
+/*###################  Article Page ##################*/
+div#article-wrapper{
+   width:600px;
+   margin:auto;
+   background:rgb(216, 216, 190);
+   box-shadow:5px 5px 5px rgba(216, 216, 190, .2);
+   border-radius:2px;
+   padding:20px;
+}
+div#article-wrapper > div {
+   margin:20px;
+   position:relative;
+}
+div#article-wrapper .small {
+   color:rgb(64,102,129);
+   font-size:.8em;
+}
+div#article-wrapper #text {
+}
+div.article a {
+   color:rgb(43, 108, 156);
+}
+div.article a:hover {
+   color:rgb(34,86,125);
+}
+div#top.article {
+   border-bottom-style:solid;
+   padding-bottom:10px;
+   position:relative;
+   height:20px;
+}
+div#top.article div {
+   display:inline-block;
+   position:absolute;
+   margin:auto;
+   top:0;
+   bottom:0;
+}
+div#top.article #date {
+   left:0;
+}
+div#top.article #host {
+   right:0;
+}
+div#top.article #author {
+   left:0;
+   right:0;
+   width:200px;
+   text-align:center;
+}
+div#text.article {
+   font-size:1.1em;
+}
+div#url.article {
+   padding:20px 0;
+   border-bottom-style:solid;
+   border-top-style:solid;
+}
+/*###################  Article Page Nav  ###########################*/
+button.settings {
+   border:none;
+   font:inherit;
+   display:block;
+   color:inherit;
+   cursor:pointer;
+   background:none;
+   width:100%;
+   height:100%;
+   padding:none;
+}
+/*###################  Login  #######################################*/
+input.login {
+   width:100%;
+   height:40px;
+   font-size:1em;
+   line-height:39px;
+
+   border:1px solid rgb(43,108,156);
+   border-radius:3px;
+}
+input.login:focus {
+   outline:none;
+   border-width:2px;
+}
+div.login {
+   position:relative;
+   height:110px;
+}
+form.login {
+   position:absolute;
+   top:0;
+   bottom:0;
+   left:0;
+   right:0;
+   margin:auto;
+   width:400px;
+   height:100px;
+
+}
+form.login * {
+   display:block;
+}
+span.login {
+   color:rgb(14, 52, 79);
+}
+/*###################  Fallback for Small Screens ##################*/
+@media only screen and (max-device-width:1024px) {
+   #nav-hide {
+      display:block;
+   }
+   #nav-hide.nav-active {
+      background:rgba(216,216,190,.8);
+      border-style:solid;
+      border-width:2px;
+      border-color:rgb(216,216,190);
+   }
+   div#nav {
+      left:-100px;
+      -webkit-transition-property:left;
+      -webkit-transision-duration:2s;
+   }
+   div#nav.nav-active {
+      left:0;
+   }
+   div#content-wrapper.nav-active {
+      margin-left: 100px;
+   }
+   div#content {
+      overflow:hidden;
+   }
+}

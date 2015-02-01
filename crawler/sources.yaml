@@ -1,0 +1,263 @@
+default:
+  author:
+  - attrs: {name: author}
+    tag: meta
+bbc:
+  content:
+  - attrs: {class: story-body}
+    tag: div
+  except: {tag: form}
+  spider:
+    except:
+    - attrs:
+        href: [~list, r'media, r'sport]
+      tag: a
+    - attrs: {class: r'live}
+      tag: a
+    sub:
+    - search:
+      - - attrs:
+            id: [~list, top-story, second-story, third-story, other-top-stories, feature-and-analysis,
+              features-block-2, special-reports]
+          tag: div
+        - attrs: {class: story}
+          tag: a
+      url:
+      - ''
+      - [world, africa, us_and_canada, asia, europe, middle_east]
+    type: scrape
+    url: http://www.bbc.com/news/~
+cnn:
+  content:
+  - attrs: {class: cnn_storypgraphtxt}
+    tag: p
+  - attrs: {class: cnnBlogContentPost}
+    tag: div
+  - attrs: {id: storytext}
+    tag: div
+  author:
+  - method: meta
+  spider:
+    sub:
+    - except:
+      - attrs:
+          href: [~list, r'video, r'gallery, r'cnnphotos, r'bleacherreport.com]
+        tag: a
+      search:
+      - - attrs: {class: cnn_mtt1content}
+          tag: div
+        - attrs: {class: cnn_bulletbin}
+          tag: ''
+        - {tag: a}
+      - - attrs: {class: cnn_sectt2cntnt}
+          tag: div
+        - {tag: a}
+      - {tag: h1}
+      url: ['', US, WORLD, POLITICS]
+    type: scrape
+    url: http://www.cnn.com/~
+economist:
+  content:
+  - attrs: {class: main-content}
+    tag: div
+  spider:
+    except:
+    - attrs:
+        href: [~list, r'debate, r'node, r'theworldin]
+      tag: a
+    sub:
+    - search:
+      - attrs: {class: hero-tab}
+        tag: a
+      - {tag: article}
+      url: ''
+    - tag: article
+      url:
+      - business-finance
+      - economics
+      - [world, united-states, britain, europe, china, asia, middle-east-africa]
+    type: scrape
+    url: http://www.economist.com/~
+latimes:
+  content:
+  - attrs: {id: story-body-text}
+    tag: div
+newsweek:
+  content:
+  - attrs: {class: field-item}
+    tag: div
+  - attrs: {class: article-body}
+    tag: div
+  author:
+  - method: search
+    string: "(?:_sf_async_config.authors(?: ?)=(?: ?)[\"'])(.*?)[\"'];"
+  spider:
+    sub:
+    - search:
+      - - attrs: {class: top-stories}
+          tag: div
+        - attrs: {class: story-title}
+          tag: div
+      url: ''
+    type: scrape
+    url: http://www.newsweek.com/~
+nytimes:
+  conn: cookies
+  content:
+  - attrs: {class: story-body-text}
+    tag: p
+  - attrs: {class: story-content}
+    tag: p
+  - {attrs: articleBody, name: itemprop, tag: p}
+  - attrs: {class: articleBody}
+    tag: div
+  - attrs: {class: content}
+    tag: div
+  - attrs: {class: entry-content}
+    tag: div
+  date: [meta, itemprop, datePublished, text]
+  author:
+  - method: meta
+  spider:
+    sub:
+    - attrs: {class: r'story}
+      except:
+        attrs:
+          href: [~list, r'video., r'slideshow, r'interactive, r'_gallery, r'topics,
+            r'votes]
+        tag: a
+      tag: ''
+      url: [world, national, politics, business]
+    type: scrape
+    url: http://www.nytimes.com/pages/~
+theguardian:
+  content:
+  - attrs: {itemprop: articleBody}
+    tag: div
+  - attrs: {itemprop: reviewBody}
+    tag: div
+  author:
+  - method: meta
+  spider:
+    except:
+    - attrs:
+        href: [~list, r'video, r'pictures, r'gallery, r'graphic]
+      tag: a
+    - attrs:
+        id: [pictures-and-video, video-and-pictures, video]
+      tag: section
+    sub:
+    - except:
+      - attrs: {class: bullet}
+        tag: li
+      search:
+      - attrs: {data-link-name: article}
+        tag: a
+      url:
+      - uk-news
+      - us/business
+      - [world, usa, europe-news, middleeast, asia, americas]
+    type: scrape
+    url: http://www.theguardian.com/~
+time:
+  conn: {headers: false}
+  content:
+  - attrs: {class: article-body}
+    tag: section
+  except:
+    - tag: aside
+    - attrs: {class: content-ad}
+      tag: div
+  author:
+  - method: search
+    string: "(?:_sf_async_config.authors(?: ?)=(?: ?)[\"'])(.*?)[\"'];"
+  spider:
+    except:
+      attrs: {class: format-video}
+      tag: div
+    sub:
+    - search:
+      - - attrs: {class: article-list}
+          tag: section
+        - attrs: {class: article-permalink}
+          tag: a
+      url: ['', us, politics, world, business]
+    type: scrape
+    url: http://www.time.com/~
+usnews:
+  content:
+  - attrs: {id: content}
+    tag: div
+  - attrs: {id: content}
+    tag: article
+  except:
+    attrs: {class: content-image}
+    tag: div
+  author:
+  - method: meta
+  spider:
+    sub:
+    - attrs: {class: media}
+      tag: div
+      url: ''
+    type: scrape
+    url: http://www.usnews.com/~
+washingtonpost:
+  content:
+  - attrs: {id: article}
+    tag: div
+  - attrs: {id: post-content}
+    tag: div
+  - {tag: article}
+  date: [time, datetime, none, date]
+  author:
+    - method: search
+      string: "(?:var wp_author(?: ?)=(?: ?)[\"'])(.*?)[\"']"
+    - method: search
+      string: "(?:this.props.author(?: ?)=(?: ?)[\"'])(.*?)[\"']"
+  spider:
+    sub:
+    - attrs: {class: hot-topics}
+      tag: div
+      url: ''
+    - except:
+        attrs:
+          href: [~list, r'photo, r'_video, r'gallery]
+        tag: a
+      search:
+      - - {tag: h2}
+        - {tag: a}
+      url:
+      - politics
+      - national
+      - world
+      - [world, africa, europe, middle-east, national-security, war-zones]
+      - business
+    type: scrape
+    url: http://www.washingtonpost.com/~
+usatoday:
+  content:
+  - attrs: {itemprop: articleBody}
+    tag: div
+  except: {tag: form}
+  spider:
+    except:
+    - attrs:
+        href: [~list, r'media, r'sport, r'video]
+      tag: a
+    - attrs: {class: r'live}
+      tag: a
+    sub:
+    - search:
+      - - attrs:
+            id: [~list, top-story, second-story, third-story, other-top-stories, feature-and-analysis,
+              features-block-2, special-reports]
+          tag: div
+        - attrs: {class: story}
+          tag: a
+      url:
+      - ''
+      - [world, africa, us_and_canada, asia, europe, middle_east]
+    type: scrape
+    url: http://www.usatoday.com/news/~
+

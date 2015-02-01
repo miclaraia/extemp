@@ -1,0 +1,36 @@
+<%inherit file="base.html"/>
+
+<%block name="content">
+   % if not query is UNDEFINED:
+   <form name="refine" method="get" action="/search">
+   <input name="query" value=${query} style="display:none;" />
+   % else:
+   <form name="refine" method="get" action="/">
+   % endif
+      <select name="host">
+         <option value="none">All</option>
+         % for x,y in hosts.items():
+            % if not host is UNDEFINED and x == host:
+            <option value="${x}" selected="selected">${y}</option>
+            % else:
+            <option value="${x}">${y}</option>
+            % endif
+         % endfor
+      </select>
+      <input type="submit"></input>
+   </form>
+   <ul id="results-wrapper" class="article-list">
+      % for item in results:
+         <a href="/article/${item['id']}"><li class="article-list results">
+            <div id="title" class="article-list data">${item['name']}</div>
+            <div id="meta" class="article-list data small">
+               <div id="date" class="article-list data">${item['date']}</div>
+               <div id="author" class="article-list data">${item['author']}</div>
+               <div id="host" class="article-list data">${item['host']}</div>
+            </div>
+            <div id="snippet" class="article-list data">${item['text']}</div>
+            <div id="tags" class="article-list data small">${item['tags']}</div>
+         </li></a>
+      % endfor
+   </ul>
+</%block>
