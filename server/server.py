@@ -316,6 +316,7 @@ class Login:
    def GET(self):
       return self.index()
 
+cherrypy.config.update({'tools.staticdir.root' : '%s/extemp/repo/server' % home})
 cherrypy.config.update(path+'global.conf')
 cherrypy.tree.mount(Root(),'',config=path+'root.conf')
 cherrypy.tree.mount(Article(),'/article',config=path+'article.conf')
