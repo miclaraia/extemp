@@ -4,7 +4,7 @@ import pymysql
 import sys,re,os,time,logging
 from mako.template import Template
 from mako.lookup import TemplateLookup
-sys.path.append('/home/michael/extemp')
+sys.path.append('/home/michael/extemp/repo')
 print(sys.path)
 import crawler
 from crawler.cheetah import Cheetah
