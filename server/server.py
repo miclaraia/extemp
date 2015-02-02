@@ -4,10 +4,14 @@ import pymysql
 import sys,re,os,time,logging
 from mako.template import Template
 from mako.lookup import TemplateLookup
-sys.path.append('/home/michael/extemp/repo')
 print(sys.path)
+
+#makes sure crawler is in the pathspec
+home = os.path.expanduser('~')
+sys.path.append('%s/extemp/repo' % home)
 import crawler
 from crawler.cheetah import Cheetah
+
 crawler.cheetah.logger = cherrypy.log.access_log
 cherrypy.log.access_log.setLevel(logging.DEBUG)
 cherrypy.log.access_log.handlers[1].setLevel(logging.INFO)
