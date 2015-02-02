@@ -2,13 +2,14 @@
 from crawler import *
 import crawler.owl
 import time,json,logging
+from os.path import expanduser
 
 #logger used for the entire package and everything else
 logger = logging.getLogger('crawler')
 log_fail = logging.getLogger('url_fail')
 path = os.path.abspath(__file__)
 path = '/'.join(path.split('/')[:-1])
-log_fail.addHandler(logging.handlers.RotatingFileHandler('/home/michael/extemp/crawler/debug/urls/log',backupCount=9))
+log_fail.addHandler(logging.handlers.RotatingFileHandler('%s/extemp/repo/crawler/debug/urls/log' % expanduser('~'),backupCount=9))
 log_fail.handlers[0].setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:: %(message)s','%Y-%m-%d %H:%M:%S'))
 log_fail.handlers[0].doRollover()
 log_fail.propagate = False
