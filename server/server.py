@@ -7,8 +7,12 @@ from mako.lookup import TemplateLookup
 print(sys.path)
 
 #makes sure crawler is in the pathspec
-home = os.path.expanduser('~')
-sys.path.append('%s/extemp/repo' % home)
+extemp_path = os.path.dirname(os.path.realpath(__file__))
+extemp_path = '/'.join(extemp_path.split('/')[0:-1])
+sys.path.append(extemp_path)
+#home = os.path.expanduser('~')
+#sys.path.append('%s/extemp/repo' % home)
+print
 import crawler
 from crawler.cheetah import Cheetah
 
@@ -316,7 +320,7 @@ class Login:
    def GET(self):
       return self.index()
 
-cherrypy.config.update({'tools.staticdir.root' : '%s/extemp/repo/server' % home})
+cherrypy.config.update({'tools.staticdir.root' : '%s/server' % extemp_path})
 cherrypy.config.update(path+'global.conf')
 cherrypy.tree.mount(Root(),'',config=path+'root.conf')
 cherrypy.tree.mount(Article(),'/article',config=path+'article.conf')
