@@ -9,4 +9,4 @@ kill -9 $ssh_pid
 echo "importing new database"
 mysql -u extemp --password="zhH/5]qAYTNNXgE" forensics < ${name}
 echo "indexing"
-sudo indexer --all
+sudo indexer --all --rotate
