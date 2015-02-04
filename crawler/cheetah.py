@@ -278,6 +278,6 @@ class Cheetah:
 
    def connect(self):
       logger.info('connection opening')
-      self.conn = pymysql.connect(host='192.168.1.55',user='mike',passwd='opahans3',db='forensics',charset='utf8',init_command="SET NAMES UTF8")
+      self.conn = pymysql.connect(host='localhost',user='extemp',passwd='zhH/5]qAYTNNXgE',db='forensics',charset='utf8',init_command="SET NAMES UTF8")
       self.cur_dict = self.conn.cursor(pymysql.cursors.DictCursor)
       self.cur = self.conn.cursor()
